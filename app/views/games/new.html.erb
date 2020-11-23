@@ -1,0 +1,22 @@
+<h1 class="title">New Game</h1>
+<div class="letters">
+  <% @letters.each do |letter| %>
+    <p class="inline-letters"><%= letter %></p>
+  <% end %>
+</div>
+<p class="question">What is the longest word you can find?</p>
+
+<form class="form-inline" action="/score" method="post">
+  <div class="form-group mx-sm-3 mb-2 d-flex">
+    <input type="text" class="form-control mr-3" name="word">
+    <input type="submit" value="play" class="btn btn-primary px-3">
+    <input type="hidden" name="letters" value="<%= @letters.join(" ") %>">
+  </div>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+
+
+<!-- <form action="/score" method="post">
+  <input type="text" name="word">
+  <input type="submit" value="play">
+</form> -->
